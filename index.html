@@ -815,6 +815,111 @@
       line-height: 1.5;
     }
 
+    /* 6.5 ACADEMIC EVENTS & ACTIVITIES */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .event-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .event-card:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .event-type-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .badge-conference {
+      background-color: rgba(255, 62, 0, 0.08);
+      color: var(--primary);
+    }
+
+    .badge-school {
+      background-color: #f0fdf4;
+      color: #16a34a;
+      border: 1px solid #bbf7d0;
+    }
+
+    .badge-seminar {
+      background-color: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+    }
+
+    .event-header {
+      margin-bottom: 0.75rem;
+    }
+
+    .event-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #0f172a;
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .event-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .event-meta svg {
+      width: 14px;
+      height: 14px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .event-role {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .event-role strong {
+      color: var(--primary);
+    }
+
+    .event-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
     /* 7. NOTIFICATION SYSTEM */
     .toast {
       position: fixed;
@@ -1015,6 +1120,14 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
             <span>Publications</span>
+          </a>
+        </li>
+        <li>
+          <a href="#events">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 005.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span>Events &amp; Schools</span>
           </a>
         </li>
         <li>
@@ -1617,6 +1730,170 @@
       </div>
     </section>
 
+    <!-- 5.5 ACADEMIC EVENTS & ACTIVITIES (Conferences, Summer Schools & Seminars) -->
+    <section id="events">
+      <h2 class="section-title">Conferences &amp; Summer Schools</h2>
+      <div class="events-grid">
+        
+        <!-- Event 1: ECIR 2026 -->
+        <div class="event-card">
+          <span class="event-type-badge badge-conference">Conference</span>
+          <div class="event-header">
+            <h3 class="event-title">48th European Conference on Information Retrieval (ECIR 2026)</h3>
+            <div class="event-meta">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Bilbao, Spain
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Mar 2026
+              </span>
+            </div>
+          </div>
+          <p class="event-role">Participation: <strong>Oral Presenter &amp; Attendee</strong></p>
+          <p class="event-desc">
+            Attended the main conference program and presented our work on annotation-free localisation of clinical findings at the Text2Story’26 workshop, engaging in scientific discussions surrounding multimodal language grounding and LLM reasoning.
+          </p>
+        </div>
+
+        <!-- Event 2: ECIR 2025 -->
+        <div class="event-card">
+          <span class="event-type-badge badge-conference">Conference</span>
+          <div class="event-header">
+            <h3 class="event-title">47th European Conference on Information Retrieval (ECIR 2025)</h3>
+            <div class="event-meta">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Lucca, Italy
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Mar 2025
+              </span>
+            </div>
+          </div>
+          <p class="event-role">Participation: <strong>Paper Presenter</strong></p>
+          <p class="event-desc">
+            Presented our empirical study evaluating generative patient journeys in Portuguese at the Text2Story'25 workshop. Exchanged perspectives with researchers on medical narratives processing and domain-guided instruction tuning.
+          </p>
+        </div>
+
+        <!-- Event 3: LxMLS 2024 -->
+        <div class="event-card">
+          <span class="event-type-badge badge-school">Summer School</span>
+          <div class="event-header">
+            <h3 class="event-title">14th Lisbon Machine Learning School (LxMLS 2024)</h3>
+            <div class="event-meta">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                IST, Lisbon, Portugal
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Jul 2024
+              </span>
+            </div>
+          </div>
+          <p class="event-role">Participation: <strong>Attendee / Researcher</strong></p>
+          <p class="event-desc">
+            Participated in an intensive, world-class school covering modern natural language processing and deep learning foundations, structured prediction models, sequence-to-sequence neural architectures, and reinforcement learning.
+          </p>
+        </div>
+
+        <!-- Event 4: VISUM 2023 -->
+        <div class="event-card">
+          <span class="event-type-badge badge-school">Summer School</span>
+          <div class="event-header">
+            <h3 class="event-title">Vision Understanding and Machine Learning School (VISUM 2023)</h3>
+            <div class="event-meta">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Porto, Portugal
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Jul 2023
+              </span>
+            </div>
+          </div>
+          <p class="event-role">Participation: <strong>Attendee &amp; Contributor</strong></p>
+          <p class="event-desc">
+            Engaged in hands-on computer vision tutorials, state-of-the-art vision models, self-supervised representation learning, generative adversarial networks, and multi-modal alignment models organized by INESC TEC.
+          </p>
+        </div>
+
+        <!-- Event 5: ICIP 2023 -->
+        <div class="event-card">
+          <span class="event-type-badge badge-conference">Conference</span>
+          <div class="event-header">
+            <h3 class="event-title">IEEE International Conference on Image Processing (ICIP 2023)</h3>
+            <div class="event-meta">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Kuala Lumpur, Malaysia
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Oct 2023
+              </span>
+            </div>
+          </div>
+          <p class="event-role">Participation: <strong>Presenter &amp; Participant</strong></p>
+          <p class="event-desc">
+            Presented our poster on neural image decoding and complexity-scalable learning architectures, participating in industry-wide discussions on advanced standards (JPEG AI / MPEG) and machine-learning-centric signal processing.
+          </p>
+        </div>
+
+        <!-- Event 6: INESC TEC Seminars -->
+        <div class="event-card">
+          <span class="event-type-badge badge-seminar">Workshop / Seminar</span>
+          <div class="event-header">
+            <h3 class="event-title">LIAAD Colloquia &amp; Artificial Intelligence Seminars</h3>
+            <div class="event-meta">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                INESC TEC, Porto, Portugal
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Ongoing
+              </span>
+            </div>
+          </div>
+          <p class="event-role">Participation: <strong>Regular Presenter &amp; Attendee</strong></p>
+          <p class="event-desc">
+            Regularly present research progress, participate in group study discussions on vision-language alignments and clinical text summarizers, and attend invited guest lectures at LIAAD-INESC TEC and the Computer CS Department of UP.
+          </p>
+        </div>
+        
+      </div>
+    </section>
+
     <!-- 6. HONORS & ACCOLADES -->
     <section id="awards">
       <h2 class="section-title">Awards &amp; Achievements</h2>
@@ -1715,7 +1992,7 @@
 
     // SCROLL INTERACTION STATE HIGHLIGHT
     window.addEventListener('scroll', () => {
-      const sections = ['about', 'education', 'experience', 'projects', 'publications', 'awards'];
+      const sections = ['about', 'education', 'experience', 'projects', 'publications', 'events', 'awards'];
       const scrollPos = window.scrollY + 120;
 
       for (const section of sections) {
