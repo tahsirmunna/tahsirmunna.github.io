@@ -1,0 +1,6 @@
+{
+  "name": "Tahsir Ahmed Munna Portfolio",
+  "description": "Academic portfolio website for Tahsir Ahmed Munna, PhD Student in Computer Science at FCUP, University of Porto & INESC TEC, Portugal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
