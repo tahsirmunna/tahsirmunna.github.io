@@ -364,38 +364,42 @@
     /* Tag Cloud Grid for Research Interests */
     .interests-container {
       margin-top: 2rem;
+      background-color: #fafbfc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
     }
 
     .interests-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #0f172a;
-      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.01em;
+      text-align: center;
     }
 
     .tag-cloud {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.65rem;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      padding: 0.25rem 0;
     }
 
     .tag-badge {
-      background-color: #f8fafc;
-      border: 1px solid #e2e8f0;
-      color: #334155;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: var(--transition);
+      display: inline-block;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: default;
+      user-select: none;
+      white-space: nowrap;
     }
 
     .tag-badge:hover {
-      background-color: var(--primary);
-      border-color: var(--primary);
-      color: #ffffff;
-      transform: scale(1.03);
+      transform: scale(1.12) rotate(1deg);
+      filter: brightness(0.85);
+      text-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
 
     /* 3. TIMELINE LAYOUT (Education & Experience) */
@@ -1278,6 +1282,54 @@
         display: none !important;
       }
     }
+
+    /* Scroll to Top Floating Button */
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: #ffffff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .scroll-top-btn.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .scroll-top-btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .scroll-top-btn:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 991px) {
+      .scroll-top-btn {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 42px;
+        height: 42px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1441,14 +1493,15 @@
       <div class="interests-container">
         <h3 class="interests-title">Core Research Focus Fields</h3>
         <div class="tag-cloud">
-          <span class="tag-badge">Vision &amp; Language</span>
-          <span class="tag-badge">Deep Learning</span>
-          <span class="tag-badge">Natural Language Processing (NLP)</span>
-          <span class="tag-badge">Medical AI</span>
-          <span class="tag-badge">Parameter-Efficient Fine-Tuning</span>
-          <span class="tag-badge">Image Compression &amp; Decoding</span>
-          <span class="tag-badge">Knowledge Graphs</span>
-          <span class="tag-badge">Multimodal Alignment</span>
+          <span class="tag-badge" style="font-size: 1.15rem; font-weight: 600; color: #1e3a8a; margin: 0 0.2rem;">Deep Learning</span>
+          <span class="tag-badge" style="font-size: 0.8rem; font-weight: 500; color: #ea580c; margin: 0 0.2rem;">Image Compression &amp; Decoding</span>
+          <span class="tag-badge" style="font-size: 1.4rem; font-weight: 700; color: #ff3e00; margin: 0 0.2rem;">Vision &amp; Language</span>
+          <span class="tag-badge" style="font-size: 0.75rem; font-weight: 500; color: #475569; margin: 0 0.2rem;">Knowledge Graphs</span>
+          <span class="tag-badge" style="font-size: 1.25rem; font-weight: 700; color: #7c3aed; margin: 0 0.2rem;">Multimodal Alignment</span>
+          <span class="tag-badge" style="font-size: 0.9rem; font-weight: 500; color: #4f46e5; margin: 0 0.2rem;">Parameter-Efficient Fine-Tuning</span>
+          <span class="tag-badge" style="font-size: 1.1rem; font-weight: 600; color: #0d9488; margin: 0 0.2rem;">NLP</span>
+          <span class="tag-badge" style="font-size: 1.0rem; font-weight: 600; color: #dc2626; margin: 0 0.2rem;">Medical AI</span>
+          <span class="tag-badge" style="font-size: 1.05rem; font-weight: 600; color: #0891b2; margin: 0 0.2rem;">Knowledge Domain Integration</span>
         </div>
       </div>
     </section>
@@ -2420,6 +2473,13 @@
     <span id="toast-text">Text successfully copied!</span>
   </div>
 
+  <!-- FLOATING SCROLL TO TOP BUTTON -->
+  <button id="scroll-to-top" class="scroll-top-btn" aria-label="Scroll to Top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  </button>
+
   <script>
     // MOBILE NAVIGATION MENUBAR INTERACTION
     const menuToggle = document.getElementById('menu-toggle');
@@ -2459,8 +2519,17 @@
       });
     });
 
-    // SCROLL INTERACTION STATE HIGHLIGHT
+    // SCROLL INTERACTION STATE HIGHLIGHT & SCROLL TO TOP FLOATING BUTTON
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+
     window.addEventListener('scroll', () => {
+      // Show/Hide scroll-to-top button
+      if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+
       const sections = ['about', 'education', 'experience', 'projects', 'publications', 'events', 'awards'];
       const scrollPos = window.scrollY + 150; // Adjusted scroll threshold to account for both mobile top bars
 
@@ -2493,6 +2562,16 @@
         }
       }
     });
+
+    // Scroll smoothly to top on click
+    if (scrollToTopBtn) {
+      scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
 
     // BIBTEX CODE TOGGLER
     function toggleBibTeX(id) {
