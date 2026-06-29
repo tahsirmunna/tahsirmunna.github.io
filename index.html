@@ -178,6 +178,25 @@
       color: var(--sidebar-text-muted);
       margin-bottom: 0.6rem;
       word-break: break-all;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .contact-badge-list li.clickable {
+      cursor: pointer;
+      border-radius: 6px;
+      padding: 0.25rem 0.4rem;
+      margin-left: -0.4rem;
+      width: calc(100% + 0.8rem);
+    }
+
+    .contact-badge-list li.clickable:hover {
+      color: var(--sidebar-text);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .contact-badge-list li.clickable:hover .copy-icon {
+      opacity: 1 !important;
+      color: var(--primary) !important;
     }
 
     .contact-badge-list li svg {
@@ -988,6 +1007,60 @@
       margin-bottom: 0.35rem;
     }
 
+    .visitor-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+      padding: 0.5rem 1rem;
+      background: #f9fafb;
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-main);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    .visitor-pulse-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--primary);
+      animation: visitorPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes visitorPulse {
+      0%, 100% {
+        transform: scale(0.85);
+        opacity: 0.6;
+        box-shadow: 0 0 4px var(--primary);
+      }
+      50% {
+        transform: scale(1.15);
+        opacity: 1;
+        box-shadow: 0 0 10px var(--primary);
+      }
+    }
+
+    .scholar-callout-card {
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .scholar-callout-card:hover {
+      border-color: var(--primary) !important;
+      box-shadow: 0 4px 12px rgba(255, 62, 0, 0.03) !important;
+    }
+    .scholar-btn:hover {
+      background-color: var(--primary-hover) !important;
+      box-shadow: 0 4px 10px rgba(255, 62, 0, 0.2) !important;
+    }
+    .scholar-btn:hover svg {
+      transform: translate(2px, -2px);
+    }
+
     /* ========================================================== */
     /* RESPONSIVE SCALES (MEDIA QUERIES) */
     /* ========================================================== */
@@ -1172,11 +1245,15 @@
 
     <div class="sidebar-footer">
       <ul class="contact-badge-list">
-        <li>
+        <li class="clickable" onclick="copyEmailToClipboard('tahsir.a.munna@inesctec.pt')" title="Click to copy email">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          <span title="Click to copy" style="cursor:pointer;" onclick="copyEmailToClipboard('tahsir.a.munna@inesctec.pt')">tahsir.a.munna@inesctec.pt</span>
+          <span>tahsir.a.munna@inesctec.pt</span>
+          <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; color: var(--sidebar-text-muted); opacity: 0.5; transition: opacity 0.2s, color 0.2s; margin-left: auto; flex-shrink: 0;">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
         </li>
         <li>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1454,6 +1531,29 @@
     <!-- 5. PUBLICATIONS HUD WITH DYNAMIC SEARCH & CITATIONS -->
     <section id="publications">
       <h2 class="section-title">Publications</h2>
+
+      <!-- Google Scholar Callout Section -->
+      <div class="scholar-callout-card" style="margin-bottom: 2rem; padding: 1.5rem; background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 1rem; min-width: 280px; flex: 1;">
+          <div style="width: 44px; height: 44px; background: rgba(255, 62, 0, 0.06); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; color: var(--text-main); margin: 0 0 0.15rem 0;">Google Scholar Profile</h3>
+            <p style="font-family: var(--font-sans); font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.4;">Find me on Google Scholar to explore citation metrics, h-index records, and my full bibliography.</p>
+          </div>
+        </div>
+        <a href="https://scholar.google.com/citations?user=2evrVykAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary); color: #ffffff; padding: 0.55rem 1.15rem; border-radius: 6px; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: var(--transition); white-space: nowrap; box-shadow: 0 1px 2px rgba(255, 62, 0, 0.1);" class="scholar-btn">
+          <span>Google Scholar Profile</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+          </svg>
+        </a>
+      </div>
+
       <div class="publications-hub">
         
         <!-- FILTER HUB MODULE -->
@@ -1499,7 +1599,16 @@
             <div id="bib-munna-2026" class="bibtex-box">
               <div class="bibtex-header">
                 <span>BibTeX Entry</span>
-                <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2026')">Copy</button>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                  <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2026')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy
+                  </button>
+                  <button class="bibtex-copy-btn" onclick="downloadBibTeX('text-munna-2026', 'munna-2026.bib')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m-4-5l-5 5-5-5m5 5V3"></path></svg>
+                    Download
+                  </button>
+                </div>
               </div>
               <div class="bibtex-code" id="text-munna-2026">@inproceedings{munna2026narrative,
   title={Narrative-Aware Domain Knowledge Integration for Annotation-Free Medical Image Localisation},
@@ -1533,7 +1642,16 @@
             <div id="bib-munna-2025" class="bibtex-box">
               <div class="bibtex-header">
                 <span>BibTeX Entry</span>
-                <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2025')">Copy</button>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                  <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2025')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy
+                  </button>
+                  <button class="bibtex-copy-btn" onclick="downloadBibTeX('text-munna-2025', 'munna-2025.bib')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m-4-5l-5 5-5-5m5 5V3"></path></svg>
+                    Download
+                  </button>
+                </div>
               </div>
               <div class="bibtex-code" id="text-munna-2025">@inproceedings{munna2025using,
   title={Using LLMs to Generate Patient Journeys in Portuguese: an Experiment},
@@ -1565,7 +1683,16 @@
             <div id="bib-fernandes-2025" class="bibtex-box">
               <div class="bibtex-header">
                 <span>BibTeX Entry</span>
-                <button class="bibtex-copy-btn" onclick="copyBibTeX('text-fernandes-2025')">Copy</button>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                  <button class="bibtex-copy-btn" onclick="copyBibTeX('text-fernandes-2025')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy
+                  </button>
+                  <button class="bibtex-copy-btn" onclick="downloadBibTeX('text-fernandes-2025', 'fernandes-2025.bib')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m-4-5l-5 5-5-5m5 5V3"></path></svg>
+                    Download
+                  </button>
+                </div>
               </div>
               <div class="bibtex-code" id="text-fernandes-2025">@inproceedings{fernandes2025human,
   title={Human Experts vs. Large Language Models: Evaluating Annotation Scheme and Guidelines Development for Clinical Narratives},
@@ -1597,7 +1724,16 @@
             <div id="bib-munna-2023" class="bibtex-box">
               <div class="bibtex-header">
                 <span>BibTeX Entry</span>
-                <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2023')">Copy</button>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                  <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2023')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy
+                  </button>
+                  <button class="bibtex-copy-btn" onclick="downloadBibTeX('text-munna-2023', 'munna-2023.bib')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m-4-5l-5 5-5-5m5 5V3"></path></svg>
+                    Download
+                  </button>
+                </div>
               </div>
               <div class="bibtex-code" id="text-munna-2023">@inproceedings{munna2023complexity,
   title={Complexity scalable learning-based image decoding},
@@ -1626,7 +1762,16 @@
             <div id="bib-munna-2021" class="bibtex-box">
               <div class="bibtex-header">
                 <span>BibTeX Entry</span>
-                <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2021')">Copy</button>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                  <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2021')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy
+                  </button>
+                  <button class="bibtex-copy-btn" onclick="downloadBibTeX('text-munna-2021', 'munna-2021.bib')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m-4-5l-5 5-5-5m5 5V3"></path></svg>
+                    Download
+                  </button>
+                </div>
               </div>
               <div class="bibtex-code" id="text-munna-2021">@inproceedings{munna2021cross,
   title={Cross-domain co-author recommendation based on knowledge graph clustering},
@@ -1659,7 +1804,16 @@
             <div id="bib-younus-2020" class="bibtex-box">
               <div class="bibtex-header">
                 <span>BibTeX Entry</span>
-                <button class="bibtex-copy-btn" onclick="copyBibTeX('text-younus-2020')">Copy</button>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                  <button class="bibtex-copy-btn" onclick="copyBibTeX('text-younus-2020')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy
+                  </button>
+                  <button class="bibtex-copy-btn" onclick="downloadBibTeX('text-younus-2020', 'younus-2020.bib')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m-4-5l-5 5-5-5m5 5V3"></path></svg>
+                    Download
+                  </button>
+                </div>
               </div>
               <div class="bibtex-code" id="text-younus-2020">@incollection{younus2020prediction,
   title={Prediction model for prevalence of type-2 diabetes mellitus complications using machine learning approach},
@@ -1688,7 +1842,16 @@
             <div id="bib-rahman-2020" class="bibtex-box">
               <div class="bibtex-header">
                 <span>BibTeX Entry</span>
-                <button class="bibtex-copy-btn" onclick="copyBibTeX('text-rahman-2020')">Copy</button>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                  <button class="bibtex-copy-btn" onclick="copyBibTeX('text-rahman-2020')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy
+                  </button>
+                  <button class="bibtex-copy-btn" onclick="downloadBibTeX('text-rahman-2020', 'rahman-2020.bib')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m-4-5l-5 5-5-5m5 5V3"></path></svg>
+                    Download
+                  </button>
+                </div>
               </div>
               <div class="bibtex-code" id="text-rahman-2020">@inproceedings{rahman2020sentiment,
   title={A sentiment analysis based approach for understanding the user satisfaction on android application},
@@ -1719,7 +1882,16 @@
             <div id="bib-munna-2019" class="bibtex-box">
               <div class="bibtex-header">
                 <span>BibTeX Entry</span>
-                <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2019')">Copy</button>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                  <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2019')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy
+                  </button>
+                  <button class="bibtex-copy-btn" onclick="downloadBibTeX('text-munna-2019', 'munna-2019.bib')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m-4-5l-5 5-5-5m5 5V3"></path></svg>
+                    Download
+                  </button>
+                </div>
               </div>
               <div class="bibtex-code" id="text-munna-2019">@inproceedings{munna2019prediction,
   title={Prediction model for prevalence of type-2 diabetes complications with ann approach combining with k-fold cross validation and k-means clustering},
@@ -1751,7 +1923,16 @@
             <div id="bib-munna-2018" class="bibtex-box">
               <div class="bibtex-header">
                 <span>BibTeX Entry</span>
-                <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2018')">Copy</button>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                  <button class="bibtex-copy-btn" onclick="copyBibTeX('text-munna-2018')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy
+                  </button>
+                  <button class="bibtex-copy-btn" onclick="downloadBibTeX('text-munna-2018', 'munna-2018.bib')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-right: 2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m-4-5l-5 5-5-5m5 5V3"></path></svg>
+                    Download
+                  </button>
+                </div>
               </div>
               <div class="bibtex-code" id="text-munna-2018">@article{munna2018simplified,
   title={Simplified mapreduce mechanism for large scale data processing},
@@ -2040,6 +2221,21 @@
     <footer>
       <p>&copy; 2026 Tahsir Ahmed Munna. All Rights Reserved.</p>
       <p>University of Porto &amp; LIAAD-INESC TEC, Portugal &bull; Hosted on GitHub Pages</p>
+      
+      <!-- Visitor Count & Date Badge -->
+      <div class="visitor-badge">
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <span class="visitor-pulse-dot"></span>
+          <span>Visitors: <strong id="visitor-count" style="font-weight: 600;">1,248</strong></span>
+        </div>
+        <span style="color: var(--border-color);">|</span>
+        <div style="display: flex; align-items: center; gap: 0.4rem; color: var(--text-muted);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="stroke-width: 2.2; width: 13px; height: 13px;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span id="current-date">June 29, 2026</span>
+        </div>
+      </div>
     </footer>
 
   </main>
@@ -2118,6 +2314,25 @@
       });
     }
 
+    // BIBTEX DOWNLOAD AS FILE
+    function downloadBibTeX(elementId, filename) {
+      const codeElement = document.getElementById(elementId);
+      if (!codeElement) return;
+      const textToDownload = codeElement.textContent || codeElement.innerText;
+      
+      const blob = new Blob([textToDownload], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename || 'citation.bib';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      
+      showToast("Downloaded as " + (filename || 'citation.bib'));
+    }
+
     // EMAIL COORDINATE COPY
     function copyEmailToClipboard(email) {
       navigator.clipboard.writeText(email).then(() => {
@@ -2185,6 +2400,65 @@
         }
       });
     }
+
+    // DYNAMIC VISITOR COUNTER & DATE INIT
+    window.addEventListener('DOMContentLoaded', () => {
+      // 1. Format and display local current date
+      const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = new Date().toLocaleDateString('en-US', dateOptions);
+      const dateElement = document.getElementById('current-date');
+      if (dateElement) {
+        dateElement.textContent = formattedDate;
+      }
+
+      const countElement = document.getElementById('visitor-count');
+      
+      // Local fallback calculations
+      let localFallbackCount = parseInt(localStorage.getItem('portfolio_visitor_count') || '1248', 10);
+      if (!sessionStorage.getItem('portfolio_session_visited_local')) {
+        localFallbackCount += 1;
+        localStorage.setItem('portfolio_visitor_count', localFallbackCount);
+        sessionStorage.setItem('portfolio_session_visited_local', 'true');
+      }
+
+      // Display fallback first immediately
+      if (countElement) {
+        countElement.textContent = localFallbackCount.toLocaleString();
+      }
+
+      // 2. Fetch and update real API visitor count
+      // We use the free, fast CounterAPI scoped to this unique user portfolio namespace
+      const namespace = 'tahsirmunna_portfolio';
+      const key = 'visits_count';
+      const hasVisitedThisSession = sessionStorage.getItem('portfolio_session_visited_api');
+      
+      // If first view of the session, increment. Otherwise just get current value.
+      const apiEndpoint = hasVisitedThisSession 
+        ? `https://api.counterapi.dev/v1/${namespace}/${key}`
+        : `https://api.counterapi.dev/v1/${namespace}/${key}/up`;
+
+      fetch(apiEndpoint)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('API response not OK');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data && typeof data.value === 'number') {
+            // Update UI with real remote count
+            if (countElement) {
+              countElement.textContent = data.value.toLocaleString();
+            }
+            if (!hasVisitedThisSession) {
+              sessionStorage.setItem('portfolio_session_visited_api', 'true');
+            }
+          }
+        })
+        .catch(err => {
+          console.warn('Visitor Counter API bypassed or blocked (using local cache fallback):', err);
+        });
+    });
   </script>
 </body>
 </html>
