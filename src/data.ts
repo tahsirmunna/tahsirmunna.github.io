@@ -158,6 +158,23 @@ export const COURSES: Course[] = [
 
 export const PUBLICATIONS: Publication[] = [
   {
+    id: 'pub_epia2026',
+    title: 'NER Models for Portuguese Emergency Room Notes: Extracting Diagnoses, Medication Allergies, and Usual Medications',
+    authors: 'Nuno Guimarães, Tahsir Ahmed Munna, Ana Luísa Fernandes, Alexandra Mendes, Luísa Santa-Marinha, Francisco Bischoff, Ana Margarida Lopes, Luís Filipe Cunha, Purificação Silvano, and Alípio Jorge',
+    venue: 'EPIA Conference on Artificial Intelligence',
+    year: 2026,
+    category: 'nlp',
+    abstract: 'Electronic Health Records (EHRs), such as emergency room notes, contain crucial clinical narratives. This paper evaluates various Named Entity Recognition (NER) models specifically tailored for Portuguese emergency room clinical texts. We focus on extracting vital patient information including clinical diagnoses, medication allergies, and usual medications. Our results demonstrate that modern deep learning architectures, particularly domain-specific Portuguese language models, can effectively structure these clinical narratives, thereby supporting clinical decision-making and automated patient profiling in emergency healthcare settings.',
+    bibtex: `@inproceedings{guimaraes2026ner,
+  title={NER Models for Portuguese Emergency Room Notes: Extracting Diagnoses, Medication Allergies, and Usual Medications},
+  author={Guimar\\~{a}es, Nuno and Munna, Tahsir Ahmed and Fernandes, Ana Lu{\\'\\i}sa and Mendes, Alexandra and Santa-Marinha, Lu{\\'\\i}sa and Bischoff, Francisco and Lopes, Ana Margarida and Cunha, Lu{\\'\\i}s Filipe and Silvano, Purifica{\\c{c}}{\\~a}o and Jorge, Al{\\'\\i}pio},
+  booktitle={EPIA Conference on Artificial Intelligence},
+  year={2026},
+  note={Accepted at EPIA 2026 Main Track}
+}`,
+    tags: ['Named Entity Recognition', 'Clinical NLP', 'Portuguese EHR', 'Biomedical AI']
+  },
+  {
     id: 'pub1',
     title: 'Cross-Modal Retrieval with Structured Deep Graph Embeddings',
     authors: 'Anirban Chakraborty, S. Mukherjee, and R. Kumar',

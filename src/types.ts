@@ -9,7 +9,7 @@ export interface Publication {
   authors: string;
   venue: string;
   year: number;
-  category: 'computer-vision' | 'deep-learning' | 're-id' | 'cross-modal' | 'other';
+  category: 'computer-vision' | 'deep-learning' | 're-id' | 'cross-modal' | 'nlp' | 'other';
   abstract: string;
   bibtex: string;
   doi?: string;

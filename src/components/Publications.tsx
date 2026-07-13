@@ -17,6 +17,7 @@ export default function Publications() {
 
   const categories = [
     { value: 'all', label: 'All Publications' },
+    { value: 'nlp', label: 'NLP / Clinical AI' },
     { value: 're-id', label: 'Re-Identification' },
     { value: 'deep-learning', label: 'Deep Learning Security' },
     { value: 'cross-modal', label: 'Cross-Modal Retrieval' },
@@ -130,11 +131,11 @@ export default function Publications() {
 
                       <p className="font-sans text-[#888888] text-xs sm:text-sm">
                         {pub.authors.split(', ').map((auth, aIdx) => {
-                          const isAnirban = auth.includes('Anirban Chakraborty');
+                          const isHighlighted = auth.includes('Tahsir Ahmed Munna') || auth.includes('Anirban Chakraborty') || auth.includes('Tahsir Munna');
                           return (
                             <React.Fragment key={aIdx}>
                               {aIdx > 0 && ', '}
-                              <span className={isAnirban ? 'text-[#ff3e00] font-bold' : ''}>
+                              <span className={isHighlighted ? 'text-[#ff3e00] font-bold' : ''}>
                                 {auth}
                               </span>
                             </React.Fragment>
