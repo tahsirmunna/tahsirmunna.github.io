@@ -25,11 +25,11 @@ export default function News() {
         {/* News Card */}
         <div className="max-w-4xl mx-auto bg-[#151515] border border-[#222222] overflow-hidden transition-all duration-300 hover:border-[#ff3e00]/45">
           {/* Image */}
-          <div className="relative w-full h-[240px] sm:h-[380px] bg-[#0c0c0c] overflow-hidden">
+          <div className="relative w-full aspect-[750/480] bg-[#0c0c0c] overflow-hidden">
             <img 
               src="https://sigarra.up.pt/fcup/pt/noticias_geral.noticias_cont?p_id=F-1843547652/amalia-foto-grupo-encontro.png" 
               alt="Tahsir Ahmed Munna showing AMALIA LLM at the Encontro de Ciência e Inovação in Lisbon" 
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              className="w-full h-auto block transition-transform duration-500 origin-top hover:scale-105"
               referrerPolicy="no-referrer"
             />
           </div>
