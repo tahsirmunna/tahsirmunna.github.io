@@ -1322,6 +1322,98 @@
       transform: translateY(0);
     }
 
+    /* NEWS SECTION STYLING */
+    .news-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .news-card:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .news-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background-color: #f1f5f9;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .news-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .news-card:hover .news-img {
+      transform: scale(1.02);
+    }
+
+    .news-content {
+      padding: 1.5rem;
+    }
+
+    .news-date {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .news-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    .news-text {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .news-link:hover {
+      color: var(--primary-hover);
+      text-decoration: underline;
+    }
+
+    .news-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
     @media (max-width: 991px) {
       .scroll-top-btn {
         bottom: 1.5rem;
@@ -1353,6 +1445,7 @@
     <a href="#publications" class="mobile-nav-link">Publications</a>
     <a href="#events" class="mobile-nav-link">Participations</a>
     <a href="#awards" class="mobile-nav-link">Awards</a>
+    <a href="#news" class="mobile-nav-link">News</a>
   </div>
 
   <!-- SIDEBAR NAVIGATION PANEL -->
@@ -1423,6 +1516,15 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L11 3z" />
             </svg>
             <span>Awards</span>
+          </a>
+        </li>
+        <li>
+          <a href="#news">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 4a2 2 0 012 2v5a2 2 0 01-2 2z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h4m-4 4h4m-4 4h4" />
+            </svg>
+            <span>News</span>
           </a>
         </li>
       </ul>
@@ -2441,6 +2543,42 @@
       </div>
     </section>
 
+    <!-- 1.5 NEWS & UPDATES -->
+    <section id="news">
+      <h2 class="section-title">News & Updates</h2>
+      <div class="news-card">
+        <div class="news-img-wrapper">
+          <img src="https://sigarra.up.pt/fcup/pt/noticias_geral.noticias_cont?p_id=F-1843547652/amalia-foto-grupo-encontro.png" 
+               alt="Tahsir Ahmed Munna and the team at the Encontro de Ciência e Inovação in Lisbon" 
+               class="news-img" 
+               referrerpolicy="no-referrer">
+        </div>
+        <div class="news-content">
+          <div class="news-date">July 17, 2026</div>
+          <h3 class="news-title">FCUP Team Showcases AMALIA LLM at the Science and Innovation Meeting</h3>
+          <p class="news-text">
+            Docents, researchers, and students from the Faculty of Sciences of the University of Porto (FCUP) and LIAAD-INESC TEC participated in the prestigious <strong>Encontro de Ciência e Inovação (Science and Innovation Meeting) 2026</strong> in Lisbon. A major highlight was the live presentation and demonstration of <strong>AMALIA</strong> (Assistente Multimodal Automático de Linguagem com Inteligência Artificial).
+          </p>
+          <p class="news-text">
+            AMALIA is the first open-source large language model (LLM) developed specifically for European Portuguese and the Portuguese cultural context. A dedicated team from FCUP and INESC TEC contributed extensively to this groundbreaking project.
+          </p>
+          <p class="news-text" style="color: var(--text-muted); font-size: 0.85rem; font-style: italic; margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem;">
+            <strong>Team photo (left to right):</strong> João Ferreira, Tahsir Ahmed Munna, José Isidro, Prof. Nuno Guimarães, Rute Rebouças, Inês Cantante, and José Evans.
+          </p>
+          <a href="https://sigarra.up.pt/fcup/pt/noticias_geral.ver_noticia?p_nr=140205" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="news-link"
+             style="margin-top: 0.5rem;">
+            <span>Read the official news on FCUP Sigarra</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- FOOTER META SUMMARY -->
     <footer>
       <p>&copy; 2026 Tahsir Ahmed Munna. All Rights Reserved.</p>
@@ -2568,7 +2706,7 @@
         scrollToTopBtn.classList.remove('show');
       }
 
-      const sections = ['about', 'education', 'experience', 'projects', 'publications', 'events', 'awards'];
+      const sections = ['about', 'education', 'experience', 'projects', 'publications', 'events', 'awards', 'news'];
       const scrollPos = window.scrollY + 150; // Adjusted scroll threshold to account for both mobile top bars
 
       for (const section of sections) {

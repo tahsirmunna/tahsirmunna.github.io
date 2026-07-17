@@ -8,6 +8,7 @@ import { BookOpen, Github, Terminal, ArrowRight, ExternalLink, HelpCircle, Check
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import News from './components/News';
 import Teaching from './components/Teaching';
 import Publications from './components/Publications';
 import Books from './components/Books';
@@ -23,7 +24,7 @@ export default function App() {
   // Monitor scroll coordinate to update nav highlights
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'research', 'teaching', 'publications', 'books', 'activities', 'contact'];
+      const sections = ['about', 'research', 'teaching', 'publications', 'books', 'activities', 'news', 'contact'];
       const scrollPos = window.scrollY + 120;
 
       for (const section of sections) {
@@ -98,6 +99,9 @@ jobs:
 
         {/* Service timelines and lab mates */}
         <Activities />
+
+        {/* News & Updates */}
+        <News />
 
         {/* Contact coordinates & client form */}
         <Contact />

@@ -21,6 +21,7 @@ export default function Header({ activeSection }: HeaderProps) {
     { label: 'Publications', href: '#publications' },
     { label: 'Books', href: '#books' },
     { label: 'Activities', href: '#activities' },
+    { label: 'News', href: '#news' },
     { label: 'Contact', href: '#contact' },
   ];
 
