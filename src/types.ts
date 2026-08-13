@@ -59,3 +59,15 @@ export interface LabMember {
   year: string;
   avatarEmoji: string;
 }
+
+export interface ResearchArtifact {
+  id: string;
+  title: string;
+  project: string;
+  domain: string;
+  category: 'medical' | 'nlp' | 'compression' | 'all';
+  image: string;
+  desc: string;
+  metrics: { label: string; value: string; highlight?: boolean }[];
+}
+

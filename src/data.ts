@@ -418,3 +418,97 @@ export const LAB_MEMBERS: LabMember[] = [
     avatarEmoji: '🎓'
   }
 ];
+
+export const RESEARCH_ARTIFACTS = [
+  {
+    id: 'art-1',
+    title: 'Automated Thoracic CT Cardiac Segmentation & Vessel Identification',
+    project: 'CardioComplete',
+    domain: 'Medical AI & Vision',
+    category: 'medical',
+    image: '/assets/images/ct_cardiac_segmentation_1786647848776.jpg',
+    desc: 'Automated multi-organ volumetric deep segmentation model for non-contrast thoracic CT scans. Identifies cardiac chambers, aorta, and coronary artery calcification boundaries to generate high-fidelity, standardized narrative radiology report drafts for opportunistic cardiovascular screening.',
+    metrics: [
+      { label: 'Dice Score', value: '0.914', highlight: true },
+      { label: 'Boundary IoU', value: '86.8%', highlight: false },
+      { label: 'Inference Time', value: '180ms / vol', highlight: false },
+      { label: 'Dataset', value: 'Thoracic CT Cohort', highlight: false }
+    ]
+  },
+  {
+    id: 'art-2',
+    title: 'Multi-Agent Intent Decision Graph for Patient-Derived Xenograft Biobanks',
+    project: 'NIAR Biobank',
+    domain: 'Agentic Systems',
+    category: 'medical',
+    image: '/assets/images/biobank_agentic_workflow_1786647864595.jpg',
+    desc: 'Autonomous conversational multi-agent framework designed to navigate heterogeneous molecular genomics, pharmacological sensitivity tables, and clinical oncology criteria. Dynamically routes queries across specialized sub-agents to recommend matched PDX specimens for translational cancer researchers.',
+    metrics: [
+      { label: 'Coordinated Agents', value: '12 Sub-Agents', highlight: true },
+      { label: 'Specimen Match Acc', value: '94.2%', highlight: true },
+      { label: 'End-to-End Latency', value: '<1.2s', highlight: false },
+      { label: 'Architecture', value: 'Intent-Directed Graph', highlight: false }
+    ]
+  },
+  {
+    id: 'art-3',
+    title: 'Rate-Distortion Curves & Deep Latent Entropy Optimization',
+    project: 'DARING',
+    domain: 'Neural Compression',
+    category: 'compression',
+    image: '/assets/images/deep_compression_rd_1786647879896.jpg',
+    desc: 'Deep neural image compression architecture utilizing context-adaptive hyperprior entropy models and learned latent quantization. Demonstrates substantial bitrate reductions while preserving high-frequency textural details and structural similarity over standard JPEG, HEIC, and BPG codecs.',
+    metrics: [
+      { label: 'BD-Rate Savings', value: '-18.4% vs BPG', highlight: true },
+      { label: 'PSNR Gain', value: '+1.2 dB', highlight: false },
+      { label: 'MS-SSIM Score', value: '0.984', highlight: false },
+      { label: 'Benchmarks', value: 'Kodak & CLIC Suites', highlight: false }
+    ]
+  },
+  {
+    id: 'art-4',
+    title: 'Clinical Attention Matrix for Emergency Room Triage Extraction',
+    project: 'HfPT Consortium',
+    domain: 'Clinical NLP',
+    category: 'nlp',
+    image: '/assets/images/clinical_ner_heatmap_1786647894084.jpg',
+    desc: 'Attention heatmap analysis and transformer token extraction matrices for unstructured clinical Portuguese triage narratives. Accurately extracts medication allergy entities, baseline prescriptions, and clinical diagnoses to streamline emergency admission workflows.',
+    metrics: [
+      { label: 'Strict F1-Score', value: '92.4%', highlight: true },
+      { label: 'Entity Precision', value: '93.8%', highlight: false },
+      { label: 'Clinical Recall', value: '91.1%', highlight: false },
+      { label: 'Corpus', value: 'Emergency Triage Notes', highlight: false }
+    ]
+  },
+  {
+    id: 'art-5',
+    title: 'Open-Source European Portuguese LLM Evaluation Radar & Perplexity',
+    project: 'AMALIA LLM',
+    domain: 'LLM Benchmark',
+    category: 'nlp',
+    image: '/assets/images/llm_eval_radar_1786647910459.jpg',
+    desc: 'Comprehensive benchmark radar and validation perplexity convergence curves for the AMALIA large language model. Evaluates instruction tuning performance across clinical summarization, syntactic reasoning, and Portuguese cultural nuance.',
+    metrics: [
+      { label: 'PT-PT Benchmark', value: '84.6 Score', highlight: true },
+      { label: 'Token Perplexity', value: '11.2 PPL', highlight: false },
+      { label: 'Token Efficiency', value: '+26%', highlight: false },
+      { label: 'Model Type', value: 'European Portuguese LLM', highlight: false }
+    ]
+  },
+  {
+    id: 'art-6',
+    title: 'K-Means Clustering & Artificial Neural Network Decision Boundaries',
+    project: 'Predictive Health',
+    domain: 'Statistical ML',
+    category: 'compression',
+    image: '/assets/images/diabetes_ann_cluster_1786647928479.jpg',
+    desc: 'Hybrid machine learning architecture combining k-means feature clustering, k-fold cross-validation, and artificial neural networks. Predicts the prevalence and severity trajectory of type-2 diabetes mellitus complications from multi-parametric patient profiles.',
+    metrics: [
+      { label: 'ROC-AUC Score', value: '0.892', highlight: true },
+      { label: 'Cross-Val Acc', value: '91.5%', highlight: false },
+      { label: 'Clinical Sensitivity', value: '88.7%', highlight: false },
+      { label: 'Validation', value: '10-Fold Stratified CV', highlight: false }
+    ]
+  }
+];
+
