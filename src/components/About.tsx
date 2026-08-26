@@ -70,29 +70,43 @@ export default function About() {
           {/* Timeline Block */}
           <div className="lg:col-span-6 flex flex-col bg-[#151515] p-6 sm:p-8 border border-[#222222]" id="about-timeline">
             {/* Timeline selector tabs */}
-            <div className="flex gap-2 p-1 bg-[#0c0c0c] border border-[#222222] mb-8 self-start">
-              <button
-                onClick={() => setTimelineTab('career')}
-                className={`flex items-center gap-2 px-4 py-2 font-mono text-[11px] uppercase tracking-wider cursor-pointer transition-all ${
-                  timelineTab === 'career'
-                    ? 'bg-[#ff3e00] text-white font-bold'
-                    : 'text-[#888888] hover:text-white'
-                }`}
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
+              <div className="flex gap-2 p-1 bg-[#0c0c0c] border border-[#222222]">
+                <button
+                  onClick={() => setTimelineTab('career')}
+                  className={`flex items-center gap-2 px-4 py-2 font-mono text-[11px] uppercase tracking-wider cursor-pointer transition-all ${
+                    timelineTab === 'career'
+                      ? 'bg-[#ff3e00] text-white font-bold'
+                      : 'text-[#888888] hover:text-white'
+                  }`}
+                >
+                  <Briefcase className="h-3.5 w-3.5" />
+                  <span>Experience</span>
+                </button>
+                <button
+                  onClick={() => setTimelineTab('education')}
+                  className={`flex items-center gap-2 px-4 py-2 font-mono text-[11px] uppercase tracking-wider cursor-pointer transition-all ${
+                    timelineTab === 'education'
+                      ? 'bg-[#ff3e00] text-white font-bold'
+                      : 'text-[#888888] hover:text-white'
+                  }`}
+                >
+                  <GraduationCap className="h-3.5 w-3.5" />
+                  <span>Academic Degrees</span>
+                </button>
+              </div>
+
+              {/* CV Direct Download Action */}
+              <a
+                href={PERSONAL_INFO.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#ff3e00] hover:bg-[#ff3e00]/90 text-white font-mono text-[11px] uppercase tracking-wider font-bold transition-all"
+                title="View & Download Curriculum Vitae"
               >
-                <Briefcase className="h-3.5 w-3.5" />
-                <span>Professional CV</span>
-              </button>
-              <button
-                onClick={() => setTimelineTab('education')}
-                className={`flex items-center gap-2 px-4 py-2 font-mono text-[11px] uppercase tracking-wider cursor-pointer transition-all ${
-                  timelineTab === 'education'
-                    ? 'bg-[#ff3e00] text-white font-bold'
-                    : 'text-[#888888] hover:text-white'
-                }`}
-              >
-                <GraduationCap className="h-3.5 w-3.5" />
-                <span>Academic Degrees</span>
-              </button>
+                <span>Curriculum Vitae</span>
+                <span className="text-[10px] opacity-80">↗</span>
+              </a>
             </div>
 
             {/* Timelines content */}

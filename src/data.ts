@@ -16,6 +16,8 @@ export const PERSONAL_INFO = {
   linkedin: 'https://linkedin.com', // Placeholder or standard profile
   github: 'https://github.com/anitcd',
   scholar: 'https://scholar.google.com/citations?user=yTcd1W4AAAAJ', // Custom URL
+  cvUrl: 'https://drive.google.com/file/d/1NaaaHPxmZvbg_MAhWS7yHGBF6MQrPvLR/view?usp=sharing',
+  cvDownloadUrl: 'https://drive.google.com/uc?export=download&id=1NaaaHPxmZvbg_MAhWS7yHGBF6MQrPvLR',
   labName: 'Visual Computing Lab',
   labUrl: 'https://visual-computing.in',
   biography: `Dr. Anirban Chakraborty is an Associate Professor in the Department of Computational and Data Sciences (CDS) at the Indian Institute of Science (IISc), Bangalore. He heads the Visual Computing Lab (VCL) at IISc, where his research focuses on computer vision, deep learning, video surveillance, and adversarial robustness.
