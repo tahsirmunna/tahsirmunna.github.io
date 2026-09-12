@@ -162,7 +162,7 @@ export const PUBLICATIONS: Publication[] = [
   {
     id: 'pub_epia2026',
     title: 'NER Models for Portuguese Emergency Room Notes: Extracting Diagnoses, Medication Allergies, and Usual Medications',
-    authors: 'Nuno Guimarães, Tahsir Ahmed Munna, Ana Luísa Fernandes, Alexandra Mendes, Luísa Santa-Marinha, Francisco Bischoff, Ana Margarida Lopes, Luís Filipe Cunha, Purificação Silvano, and Alípio Jorge',
+    authors: 'Guimarães, N., Munna, T. A., Fernandes, A. L., Mendes, A., Santa-Marinha, L., Bischoff, F., Lopes, A. M., Cunha, L. F., Silvano, P., & Jorge, A.',
     venue: 'EPIA Conference on Artificial Intelligence',
     year: 2026,
     category: 'nlp',
