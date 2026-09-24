@@ -130,22 +130,36 @@ export default function Publications() {
                       </h3>
 
                       <p className="font-sans text-[#888888] text-xs sm:text-sm">
-                        {pub.authors.split(', ').map((auth, aIdx) => {
-                          const isHighlighted = auth.includes('Tahsir Ahmed Munna') || auth.includes('Anirban Chakraborty') || auth.includes('Tahsir Munna');
-                          return (
-                            <React.Fragment key={aIdx}>
-                              {aIdx > 0 && ', '}
-                              <span className={isHighlighted ? 'text-[#ff3e00] font-bold' : ''}>
-                                {auth}
+                        {(() => {
+                          const regex = /(Munna,\s*T\.\s*A\.|Tahsir Ahmed Munna|Tahsir Munna|T\.\s*A\.\s*Munna|Anirban Chakraborty)/g;
+                          const parts = pub.authors.split(regex);
+                          return parts.map((part, pIdx) => {
+                            const isHighlighted = /(Munna,\s*T\.\s*A\.|Tahsir Ahmed Munna|Tahsir Munna|T\.\s*A\.\s*Munna|Anirban Chakraborty)/i.test(part);
+                            return isHighlighted ? (
+                              <span key={pIdx} className="text-[#ff3e00] font-bold">
+                                {part}
                               </span>
-                            </React.Fragment>
-                          );
-                        })}
+                            ) : (
+                              <React.Fragment key={pIdx}>{part}</React.Fragment>
+                            );
+                          });
+                        })()}
                       </p>
                     </div>
 
                     {/* Paper Action links */}
                     <div className="flex sm:flex-col gap-2 min-w-fit">
+                      {pub.paperUrl && pub.paperUrl !== '#' && (
+                        <a
+                          href={pub.paperUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[#0c0c0c] border border-[#222222] hover:border-[#ff3e00] text-xs font-mono uppercase tracking-wider text-[#888888] hover:text-[#ff3e00] transition-colors"
+                        >
+                          <ExternalLink className="h-3 w-3" />
+                          <span>PDF Link</span>
+                        </a>
+                      )}
                       {pub.doi && (
                         <a
                           href={`https://doi.org/${pub.doi}`}

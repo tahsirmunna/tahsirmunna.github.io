@@ -177,6 +177,24 @@ export const PUBLICATIONS: Publication[] = [
     tags: ['Named Entity Recognition', 'Clinical NLP', 'Portuguese EHR', 'Biomedical AI']
   },
   {
+    id: 'pub_ecml2025_vlg',
+    title: 'Leveraging Large Language Models and Semantic Enhancement for Vision-Language Grounding',
+    authors: 'Munna, T. A., Guimarães, N., & Jorge, A.',
+    venue: 'ECML PKDD PhD Forum',
+    year: 2025,
+    category: 'cross-modal',
+    abstract: 'Recent advances in natural language processing and computer vision, particularly through Large Language Models (LLMs), have opened new frontiers in multimodal learning. However, aligning complex medical narratives with their corresponding visual representations remains a critical bottleneck in clinical decision-making, where precision and interpretability are top priorities. This challenge is further amplified in low-resource language varieties, such as European Portuguese, where the scarcity of annotated datasets hinders the development of effective Vision-Language Grounding (VLG) systems. This work addresses these limitations by introducing a two-fold framework focused on Extractive VLG (EVLG) and Abstractive VLG (AVLG). EVLG enables precise localisation of medical findings in images based on textual descriptions and vice versa, while AVLG supports bidirectional translation between visual data and medical narratives. To overcome data scarcity, the approach leverages synthetic clinical narratives generated via LLMs and employs cross-lingual transfer learning. Semantic Enhancement Techniques (SETs), including medical ontologies and knowledge graphs, are integrated to improve both linguistic fidelity and grounding accuracy.',
+    bibtex: `@inproceedings{munna2025leveraging,
+  title={Leveraging Large Language Models and Semantic Enhancement for Vision-Language Grounding},
+  author={Munna, Tahsir Ahmed and Guimar\\~{a}es, Nuno and Jorge, Al{\\'\\i}pio},
+  booktitle={ECML PKDD PhD Forum},
+  pages={61},
+  year={2025}
+}`,
+    paperUrl: 'https://ecmlpkdd-storage.s3.eu-central-1.amazonaws.com/Ph_Dforum_2025_2_353c387b7d.pdf#page=62',
+    tags: ['Vision-Language Grounding', 'Large Language Models', 'Multimodal Learning', 'Semantic Enhancement', 'Medical AI']
+  },
+  {
     id: 'pub1',
     title: 'Cross-Modal Retrieval with Structured Deep Graph Embeddings',
     authors: 'Anirban Chakraborty, S. Mukherjee, and R. Kumar',
