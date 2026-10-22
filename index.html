@@ -2474,9 +2474,10 @@
 
     .news-img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      transform-origin: top;
+      transform-origin: center;
       transition: transform 0.5s ease;
     }
 
@@ -3748,6 +3749,36 @@
     <!-- 1.5 NEWS & UPDATES -->
     <section id="news">
       <h2 class="section-title">News & Updates</h2>
+
+      <!-- News Item: Quinta do NLP -->
+      <div class="news-card">
+        <div class="news-img-wrapper">
+          <img src="https://nabu.dcc.fc.up.pt/api/assets/1cd633bb-06eb-4187-8541-174cb77ba092" 
+               alt="Quinta do NLP: weekly discussion of research work" 
+               class="news-img" 
+               loading="lazy"
+               referrerpolicy="no-referrer">
+        </div>
+        <div class="news-content">
+          <div class="news-date">Every Thursday &bull; Weekly Research Discussion</div>
+          <h3 class="news-title">Quinta do NLP: weekly discussion of research work</h3>
+          <p class="news-text">
+            The LIAAD NLP team meets every Thursday to discuss ongoing research, share progress updates, exchange ideas, and plan the next steps in our research activities. These weekly meetings encourage collaboration and help keep our research moving forward.
+          </p>
+          <a href="https://nlp.inesctec.pt/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="news-link"
+             style="margin-top: 0.5rem;">
+            <span>Visit INESC TEC NLP Group</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- News Item: AMALIA -->
       <div class="news-card">
         <div class="news-img-wrapper">
           <img src="https://sigarra.up.pt/fcup/pt/noticias_geral.noticias_cont?p_id=F-1843547652/amalia-foto-grupo-encontro.png" 
