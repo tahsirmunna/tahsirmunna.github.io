@@ -2466,23 +2466,227 @@
     .news-img-wrapper {
       position: relative;
       width: 100%;
-      aspect-ratio: 750 / 480;
-      background-color: #f1f5f9;
+      aspect-ratio: 750 / 460;
+      max-height: 440px;
+      background-color: #0b0f19;
       overflow: hidden;
       border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
     }
 
     .news-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
       display: block;
-      transform-origin: center;
-      transition: transform 0.5s ease;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .news-card:hover .news-img {
-      transform: scale(1.02);
+      transform: scale(1.025);
+    }
+
+    .news-expand-badge {
+      position: absolute;
+      bottom: 0.85rem;
+      right: 0.85rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 0.38rem 0.8rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      pointer-events: none;
+      opacity: 0.95;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .news-card:hover .news-expand-badge {
+      opacity: 1;
+      transform: scale(1.04);
+      background: rgba(15, 23, 42, 0.96);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .news-img-wrapper {
+        aspect-ratio: 16 / 10;
+        max-height: 320px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .news-img-wrapper {
+        aspect-ratio: 4 / 3;
+        max-height: 280px;
+      }
+    }
+
+    /* INTERACTIVE NEWS IMAGE LIGHTBOX & FULL VISUALIZATION */
+    .news-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .news-lightbox.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .news-lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(4, 7, 13, 0.95);
+      backdrop-filter: blur(14px);
+      cursor: zoom-out;
+    }
+
+    .news-lightbox-content {
+      position: relative;
+      z-index: 2;
+      max-width: 95vw;
+      max-height: 94vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: lightboxZoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes lightboxZoomIn {
+      from { transform: scale(0.94); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .news-lightbox-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      gap: 1rem;
+    }
+
+    .news-lightbox-btn {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.38rem 0.85rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .news-lightbox-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .news-lightbox-close {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .news-lightbox-close:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: scale(1.08);
+    }
+
+    .news-lightbox-img-box {
+      max-width: 95vw;
+      max-height: 78vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .news-lightbox-img {
+      max-width: 100%;
+      max-height: 78vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      cursor: zoom-out;
+    }
+
+    .news-lightbox-meta {
+      margin-top: 0.75rem;
+      color: #e2e8f0;
+      font-size: 0.85rem;
+      text-align: center;
+      max-width: 800px;
+      font-family: var(--font-sans);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .news-lightbox-caption {
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    .news-lightbox-hint {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      font-family: var(--font-robotic);
+      letter-spacing: 0.05em;
+    }
+
+    .news-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem 1.25rem;
+      margin-top: 0.75rem;
+      padding-top: 0.65rem;
+      border-top: 1px dashed rgba(226, 232, 240, 0.8);
+    }
+
+    .news-actions .news-link {
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+      cursor: pointer;
     }
 
     .news-content {
@@ -3752,153 +3956,379 @@
 
       <!-- News Item: Quinta do NLP -->
       <div class="news-card">
-        <div class="news-img-wrapper">
+        <div class="news-img-wrapper" title="Click to view full image">
           <img src="https://nabu.dcc.fc.up.pt/api/assets/1cd633bb-06eb-4187-8541-174cb77ba092" 
                alt="Quinta do NLP: weekly discussion of research work" 
                class="news-img" 
+               style="object-position: center 42%;"
                loading="lazy"
                referrerpolicy="no-referrer">
+          <div class="news-expand-badge" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7" />
+            </svg>
+            <span>View Full Image</span>
+          </div>
         </div>
         <div class="news-content">
           <div class="news-date">Every Thursday &bull; Porto, Portugal</div>
-          <h3 class="news-title">Quinta do NLP: weekly discussion of research work</h3>
+          <h3 class="news-title">Quinta do NLP: Weekly Research Discussion at INESC TEC</h3>
           <p class="news-text">
-            The LIAAD NLP team meets every Thursday to discuss ongoing research, share progress updates, exchange ideas, and plan the next steps in our research activities. These weekly meetings encourage collaboration and help keep our research moving forward.
+            Researchers and doctoral candidates from the LIAAD NLP group at INESC TEC gather every Thursday for "Quinta do NLP". The regular seminar provides an active forum where Tahsir Ahmed Munna and fellow researchers share progress updates, discuss emerging methodologies in natural language processing and vision-language models, and collaborate on ongoing initiatives.
           </p>
-          <a href="https://nlp.inesctec.pt/" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="news-link"
-             style="margin-top: 0.5rem;">
-            <span>Visit INESC TEC NLP Group</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
+          <div class="news-actions">
+            <a href="https://nlp.inesctec.pt/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="news-link">
+              <span>Visit INESC TEC NLP Group</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <button type="button" 
+                    class="news-link news-expand-trigger" 
+                    data-img-src="https://nabu.dcc.fc.up.pt/api/assets/1cd633bb-06eb-4187-8541-174cb77ba092" 
+                    data-img-alt="Quinta do NLP: weekly discussion of research work">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              <span>View Full Image</span>
+            </button>
+          </div>
         </div>
       </div>
 
       <!-- News Item: ESSIR 2026 -->
       <div class="news-card">
-        <div class="news-img-wrapper">
+        <div class="news-img-wrapper" title="Click to view full image">
           <img src="https://media.licdn.com/dms/image/v2/D4E22AQHCmH0BmZHdSg/feedshare-image-high-res/B4EZ.8qdP0GoAU-/0/1785576674626?e=1794441600&v=beta&t=cy7dbwrAke-uzEmGag5E2yqlxsh1oMGSBZ2_EM0v3J4" 
                alt="Tahsir Ahmed Munna at ESSIR 2026 in Bucharest, Romania" 
                class="news-img" 
+               style="object-position: center 74%;"
                loading="lazy"
                referrerpolicy="no-referrer"
                onerror="this.onerror=null; this.src='https://nabu.dcc.fc.up.pt/api/assets/eebf26d8-4805-4b19-9b45-d114d3431609';">
+          <div class="news-expand-badge" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7" />
+            </svg>
+            <span>View Full Image</span>
+          </div>
         </div>
         <div class="news-content">
           <div class="news-date">July 27, 2026 &bull; Bucharest, Romania</div>
-          <h3 class="news-title">Tahsir Ahmed Munna participated in the ESSIR 2026</h3>
+          <h3 class="news-title">Tahsir Ahmed Munna Participates in ESSIR 2026</h3>
           <p class="news-text">
             Tahsir Ahmed Munna, a PhD researcher at LIAAD, INESC TEC, University of Porto, participated in the 17th European Summer School on Information Retrieval (ESSIR 2026), held July 27–31, 2026, in Bucharest, Romania.
           </p>
           <p class="news-text">
-            ESSIR is a long-running summer school that brings together researchers and research students from across Europe and beyond to explore advanced topics in Information Retrieval. This year's edition was organized as a collaboration between the CAMPUS Research Institute at the National University of Science and Technology Politehnica Bucharest, TU Wien, and CEA LIST, and featured hands-on sessions, a workshop, and a hackathon alongside networking events.
+            ESSIR is an established international summer school uniting researchers and doctoral students from across Europe to study advanced topics in information retrieval and search technologies. Organised collaboratively by CAMPUS Politehnica Bucharest, TU Wien, and CEA LIST, the program featured intensive tutorials, research workshops, and a collaborative hackathon. Munna's participation supported his doctoral investigations into vision-language alignment for medical image analysis.
           </p>
-          <p class="news-text">
-            Munna's participation came as part of his ongoing doctoral research, which focuses on vision-language approaches to medical image analysis.
-          </p>
-          <a href="https://2026.essir.eu/" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="news-link"
-             style="margin-top: 0.5rem;">
-            <span>More information at ESSIR 2026</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
+          <div class="news-actions">
+            <a href="https://2026.essir.eu/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="news-link">
+              <span>More information at ESSIR 2026</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <button type="button" 
+                    class="news-link news-expand-trigger" 
+                    data-img-src="https://media.licdn.com/dms/image/v2/D4E22AQHCmH0BmZHdSg/feedshare-image-high-res/B4EZ.8qdP0GoAU-/0/1785576674626?e=1794441600&v=beta&t=cy7dbwrAke-uzEmGag5E2yqlxsh1oMGSBZ2_EM0v3J4" 
+                    data-img-alt="Tahsir Ahmed Munna at ESSIR 2026 in Bucharest, Romania">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              <span>View Full Image</span>
+            </button>
+          </div>
         </div>
       </div>
 
       <!-- News Item: AMALIA -->
       <div class="news-card">
-        <div class="news-img-wrapper">
+        <div class="news-img-wrapper" title="Click to view full image">
           <img src="https://sigarra.up.pt/fcup/pt/noticias_geral.noticias_cont?p_id=F-1843547652/amalia-foto-grupo-encontro.png" 
                alt="Tahsir Ahmed Munna and the team at the Encontro de Ciência e Inovação in Lisbon" 
                class="news-img" 
+               style="object-position: center 30%;"
                referrerpolicy="no-referrer">
+          <div class="news-expand-badge" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7" />
+            </svg>
+            <span>View Full Image</span>
+          </div>
         </div>
         <div class="news-content">
           <div class="news-date">July 17, 2026 &bull; Lisbon, Portugal</div>
           <h3 class="news-title">FCUP Team Showcases AMALIA LLM at the Science and Innovation Meeting</h3>
           <p class="news-text">
-            Docents, researchers, and students from the Faculty of Sciences of the University of Porto (FCUP) and LIAAD-INESC TEC participated in the prestigious <strong>Encontro de Ciência e Inovação (Science and Innovation Meeting) 2026</strong> in Lisbon. A major highlight was the live presentation and demonstration of <strong>AMALIA</strong> (Assistente Multimodal Automático de Linguagem com Inteligência Artificial).
+            Faculty members, researchers, and students from the Faculty of Sciences of the University of Porto (FCUP) and LIAAD-INESC TEC participated in the prestigious <strong>Encontro de Ciência e Inovação 2026</strong> in Lisbon. A central highlight of the event was the live presentation and demonstration of <strong>AMALIA</strong> (Assistente Multimodal Automático de Linguagem com Inteligência Artificial).
           </p>
           <p class="news-text">
-            AMALIA is the first open-source large language model (LLM) developed specifically for European Portuguese and the Portuguese cultural context. A dedicated team from FCUP and INESC TEC contributed extensively to this groundbreaking project.
+            AMALIA is the first open-source large language model developed specifically for European Portuguese and the Portuguese cultural context, developed through extensive contributions by the FCUP and INESC TEC research team.
           </p>
           <p class="news-text" style="color: var(--text-muted); font-size: 0.85rem; font-style: italic; margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem;">
             <strong>Team photo (left to right):</strong> João Ferreira, Tahsir Ahmed Munna, José Isidro, Prof. Nuno Guimarães, Rute Rebouças, Inês Cantante, and José Evans.
           </p>
-          <a href="https://sigarra.up.pt/fcup/pt/noticias_geral.ver_noticia?p_nr=140205" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="news-link"
-             style="margin-top: 0.5rem;">
-            <span>Read the official news on FCUP Sigarra</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
+          <div class="news-actions">
+            <a href="https://sigarra.up.pt/fcup/pt/noticias_geral.ver_noticia?p_nr=140205" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="news-link">
+              <span>Read the official news on FCUP Sigarra</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <button type="button" 
+                    class="news-link news-expand-trigger" 
+                    data-img-src="https://sigarra.up.pt/fcup/pt/noticias_geral.noticias_cont?p_id=F-1843547652/amalia-foto-grupo-encontro.png" 
+                    data-img-alt="Tahsir Ahmed Munna and the team at the Encontro de Ciência e Inovação in Lisbon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              <span>View Full Image</span>
+            </button>
+          </div>
         </div>
       </div>
 
       <!-- News Item: Text2Story Workshop (ECIR) -->
       <div class="news-card">
-        <div class="news-img-wrapper">
+        <div class="news-img-wrapper" title="Click to view full image">
           <img src="https://nabu.dcc.fc.up.pt/api/assets/2b66a7ea-c083-4bc3-981d-1abb6a4f4653" 
                alt="Tahsir Ahmed Munna presenting at the Text2Story Workshop (ECIR-26) in Delft, Netherlands" 
                class="news-img" 
+               style="object-position: center 42%;"
                loading="lazy"
                referrerpolicy="no-referrer">
+          <div class="news-expand-badge" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7" />
+            </svg>
+            <span>View Full Image</span>
+          </div>
         </div>
         <div class="news-content">
           <div class="news-date">March 29, 2026 &bull; Delft, Netherlands</div>
-          <h3 class="news-title">Tahsir Ahmed Munna presents his work at the Text2Story Workshop (ECIR-26)</h3>
+          <h3 class="news-title">Tahsir Ahmed Munna Presents Work at Text2Story Workshop (ECIR-26)</h3>
           <p class="news-text">
-            Our researcher Tahsir Ahmed Munna presented the paper <em>"Narrative-Aware Domain Knowledge Integration for Annotation-Free Medical Image Localisation"</em> at the Text2Story Workshop, held in conjunction with the European Conference on Information Retrieval (ECIR-26), in Delft.
+            Tahsir Ahmed Munna presented the research paper <em>"Narrative-Aware Domain Knowledge Integration for Annotation-Free Medical Image Localisation"</em> at the Ninth International Workshop on Narrative Extraction from Texts (Text2Story), held in conjunction with the 48th European Conference on Information Retrieval (ECIR-26) in Delft, Netherlands. The paper details how narrative-grounded clinical knowledge can guide accurate lesion and structure localization in medical scans without reliance on manually annotated bounding boxes.
           </p>
-          <a href="https://text2story26.inesctec.pt/" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="news-link"
-             style="margin-top: 0.5rem;">
-            <span>Visit Text2Story Workshop Website</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          <div class="news-actions">
+            <a href="https://text2story26.inesctec.pt/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="news-link">
+              <span>Visit Text2Story Workshop Website</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <button type="button" 
+                    class="news-link news-expand-trigger" 
+                    data-img-src="https://nabu.dcc.fc.up.pt/api/assets/2b66a7ea-c083-4bc3-981d-1abb6a4f4653" 
+                    data-img-alt="Tahsir Ahmed Munna presenting at the Text2Story Workshop (ECIR-26) in Delft, Netherlands">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              <span>View Full Image</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- News Item: ECML PKDD 2025 PhD Forum -->
+      <div class="news-card">
+        <div class="news-img-wrapper" title="Click to view full image">
+          <img src="https://media.licdn.com/dms/image/v2/D4D22AQHQvk-NWO603w/feedshare-shrink_1280/B4DZlRN9suIYAs-/0/1758004241299?e=1794441600&v=beta&t=0DWZpK2faCufSLm3ogd6JUInNepz2N4kiCeEBra8VDw" 
+               alt="Tahsir Ahmed Munna presenting at ECML PKDD 2025 PhD Forum in Porto, Portugal" 
+               class="news-img" 
+               style="object-position: center 36%;"
+               loading="lazy"
+               referrerpolicy="no-referrer">
+          <div class="news-expand-badge" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7" />
             </svg>
-          </a>
+            <span>View Full Image</span>
+          </div>
+        </div>
+        <div class="news-content">
+          <div class="news-date">September 16, 2025 &bull; Porto, Portugal</div>
+          <h3 class="news-title">Tahsir Ahmed Munna Presents Doctoral Research at ECML PKDD 2025 PhD Forum</h3>
+          <p class="news-text">
+            Tahsir Ahmed Munna presented his doctoral research work at the <strong>ECML PKDD 2025 PhD Forum</strong> track in Porto, Portugal. His presentation addressed core questions in vision-language modeling and multimodal grounding, providing an opportunity to share technical ideas, engage with international researchers, and incorporate valuable peer feedback into the next phases of his PhD research.
+          </p>
+          <div class="news-actions">
+            <a href="https://ecmlpkdd.org/2025/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="news-link">
+              <span>Visit ECML PKDD 2025 Website</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <button type="button" 
+                    class="news-link news-expand-trigger" 
+                    data-img-src="https://media.licdn.com/dms/image/v2/D4D22AQHQvk-NWO603w/feedshare-shrink_1280/B4DZlRN9suIYAs-/0/1758004241299?e=1794441600&v=beta&t=0DWZpK2faCufSLm3ogd6JUInNepz2N4kiCeEBra8VDw" 
+                    data-img-alt="Tahsir Ahmed Munna presenting at ECML PKDD 2025 PhD Forum in Porto, Portugal">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              <span>View Full Image</span>
+            </button>
+          </div>
         </div>
       </div>
 
       <!-- News Item: Text2Story 2025 -->
       <div class="news-card">
-        <div class="news-img-wrapper">
+        <div class="news-img-wrapper" title="Click to view full image">
           <img src="https://nabu.dcc.fc.up.pt/api/assets/64ad54dd-a848-4b7b-b70c-d774b263b9a9" 
                alt="Tahsir Ahmed Munna presenting at Text2Story 2025 in Lucca, Italy" 
                class="news-img" 
+               style="object-position: center 50%;"
                loading="lazy"
                referrerpolicy="no-referrer">
+          <div class="news-expand-badge" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7" />
+            </svg>
+            <span>View Full Image</span>
+          </div>
         </div>
         <div class="news-content">
           <div class="news-date">April 10, 2025 &bull; Lucca, Italy</div>
-          <h3 class="news-title">Tahsir Ahmed Munna presented his paper at Text2Story 2025</h3>
+          <h3 class="news-title">Tahsir Ahmed Munna Presents Paper at Text2Story 2025 (ECIR'25)</h3>
           <p class="news-text">
-            Tahsir Munna presented the research work titled <em>"Using LLMs to Generate Patient Journeys in Portuguese: an Experiment"</em> at the Eighth International Workshop on Narrative Extraction from Texts (Text2Story) at the 47th European Conference on Information Retrieval (ECIR'25).
+            Tahsir Ahmed Munna presented the research paper titled <em>"Using LLMs to Generate Patient Journeys in Portuguese: an Experiment"</em> at the Eighth International Workshop on Narrative Extraction from Texts (Text2Story), held in conjunction with the 47th European Conference on Information Retrieval (ECIR'25) in Lucca, Italy. The work investigates the synthetic generation and clinical consistency of structured patient narrative journeys using large language models adapted for the Portuguese healthcare context.
           </p>
-          <a href="https://text2story25.inesctec.pt/" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="news-link"
-             style="margin-top: 0.5rem;">
-            <span>Visit Text2Story 2025 Website</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          <div class="news-actions">
+            <a href="https://text2story25.inesctec.pt/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="news-link">
+              <span>Visit Text2Story 2025 Website</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <button type="button" 
+                    class="news-link news-expand-trigger" 
+                    data-img-src="https://nabu.dcc.fc.up.pt/api/assets/64ad54dd-a848-4b7b-b70c-d774b263b9a9" 
+                    data-img-alt="Tahsir Ahmed Munna presenting at Text2Story 2025 in Lucca, Italy">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              <span>View Full Image</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- News Item: LxMLS 2024 -->
+      <div class="news-card">
+        <div class="news-img-wrapper" title="Click to view full image">
+          <img src="https://media.licdn.com/dms/image/v2/D5622AQErnZyLjhTXDw/feedshare-image-high-res/feedshare-image-high-res/0/1721299345239?e=1794441600&v=beta&t=WZuCx_rx0eGvefa7u1vLfiempK4je4fbZVSmudtMJ10" 
+               alt="Tahsir Ahmed Munna at Lisbon Machine Learning Summer School (LxMLS 2024) in Lisbon, Portugal" 
+               class="news-img" 
+               style="object-position: center 36%;"
+               loading="lazy" 
+               referrerpolicy="no-referrer">
+          <div class="news-expand-badge" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7" />
             </svg>
-          </a>
+            <span>View Full Image</span>
+          </div>
+        </div>
+        <div class="news-content">
+          <div class="news-date">July 18, 2024 &bull; Lisbon, Portugal</div>
+          <h3 class="news-title">Tahsir Ahmed Munna Completes the Lisbon Machine Learning Summer School (LxMLS 2024)</h3>
+          <p class="news-text">
+            Tahsir Ahmed Munna completed the 14th Lisbon Machine Learning Summer School (LxMLS 2024), held at Instituto Superior Técnico in Lisbon, Portugal. The week-long intensive school brought together leading academic faculty, industry researchers, and international doctoral scholars for lectures and hands-on laboratory sessions spanning deep learning, natural language processing, and multimodal representations.
+          </p>
+          <div class="news-actions">
+            <a href="http://lxmls.it.pt/2024/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="news-link">
+              <span>Visit LxMLS 2024 Website</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <button type="button" 
+                    class="news-link news-expand-trigger" 
+                    data-img-src="https://media.licdn.com/dms/image/v2/D5622AQErnZyLjhTXDw/feedshare-image-high-res/feedshare-image-high-res/0/1721299345239?e=1794441600&v=beta&t=WZuCx_rx0eGvefa7u1vLfiempK4je4fbZVSmudtMJ10" 
+                    data-img-alt="Tahsir Ahmed Munna at Lisbon Machine Learning Summer School (LxMLS 2024) in Lisbon, Portugal">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              <span>View Full Image</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- News Item: IEEE ICIP 2023 -->
+      <div class="news-card">
+        <div class="news-img-wrapper" title="Click to view full image">
+          <img src="https://media.licdn.com/dms/image/v2/D4D22AQFXAsa9GLo0-w/feedshare-shrink_1280/feedshare-shrink_1280/0/1696783247762?e=1794441600&v=beta&t=RzUcippjerhBxXb5_Z01DpnBJfXtBPtqAuhKjzEuiuk" 
+               alt="Tahsir Ahmed Munna attending IEEE ICIP 2023 in Kuala Lumpur, Malaysia" 
+               class="news-img" 
+               style="object-position: center 38%;"
+               loading="lazy" 
+               referrerpolicy="no-referrer">
+          <div class="news-expand-badge" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7" />
+            </svg>
+            <span>View Full Image</span>
+          </div>
+        </div>
+        <div class="news-content">
+          <div class="news-date">October 8, 2023 &bull; Kuala Lumpur, Malaysia</div>
+          <h3 class="news-title">Tahsir Ahmed Munna Presents Research at IEEE ICIP 2023</h3>
+          <p class="news-text">
+            Tahsir Ahmed Munna attended the IEEE International Conference on Image Processing (<strong>ICIP 2023</strong>) in Kuala Lumpur, Malaysia, presenting his paper titled <em>"Complexity scalable learning-based image decoding"</em>. The conference served as a major venue to share findings on neural image compression architectures, complexity scalability, and visual information processing with researchers worldwide.
+          </p>
+          <div class="news-actions">
+            <a href="https://2023.ieeeicip.org/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="news-link">
+              <span>Visit ICIP 2023 Website</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2evrVykAAAAJ&amp;sortby=pubdate&amp;citation_for_view=2evrVykAAAAJ:qxL8FJ1GzNcC" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="news-link">
+              <span>View Paper</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <button type="button" 
+                    class="news-link news-expand-trigger" 
+                    data-img-src="https://media.licdn.com/dms/image/v2/D4D22AQFXAsa9GLo0-w/feedshare-shrink_1280/feedshare-shrink_1280/0/1696783247762?e=1794441600&v=beta&t=RzUcippjerhBxXb5_Z01DpnBJfXtBPtqAuhKjzEuiuk" 
+                    data-img-alt="Tahsir Ahmed Munna attending IEEE ICIP 2023 in Kuala Lumpur, Malaysia">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              <span>View Full Image</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -3924,6 +4354,38 @@
       <path d="m18 15-6-6-6 6"/>
     </svg>
   </button>
+
+  <!-- FULLSCREEN NEWS IMAGE LIGHTBOX & FULL VISUALIZATION -->
+  <div id="news-lightbox" class="news-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="news-lightbox-backdrop" id="news-lightbox-backdrop" title="Click anywhere to close"></div>
+    <div class="news-lightbox-content">
+      <div class="news-lightbox-header">
+        <a id="news-lightbox-external" 
+           href="#" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="news-lightbox-btn" 
+           title="Open original uncropped image in full resolution">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          <span>Open Full Original Image</span>
+        </a>
+        <button type="button" class="news-lightbox-close" id="news-lightbox-close" aria-label="Close image preview" title="Close (ESC)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="news-lightbox-img-box">
+        <img id="news-lightbox-img" src="" alt="Full view" class="news-lightbox-img">
+      </div>
+      <div class="news-lightbox-meta">
+        <div class="news-lightbox-caption" id="news-lightbox-caption"></div>
+        <div class="news-lightbox-hint">Full uncropped visualization &bull; Click image or backdrop to close &bull; ESC to exit</div>
+      </div>
+    </div>
+  </div>
 
   <script>
     // MOBILE NAVIGATION MENUBAR INTERACTION
@@ -4427,6 +4889,81 @@
 
       // 4. Initialize analytics trend expansion and rendering
       initAnalyticsTrend();
+
+      // 5. News image dynamic backdrop and interactive lightbox preview
+      (function initNewsLightbox() {
+        const lightbox = document.getElementById('news-lightbox');
+        const lightboxImg = document.getElementById('news-lightbox-img');
+        const lightboxCaption = document.getElementById('news-lightbox-caption');
+        const lightboxExternal = document.getElementById('news-lightbox-external');
+        const closeBtn = document.getElementById('news-lightbox-close');
+        const backdrop = document.getElementById('news-lightbox-backdrop');
+
+        function openLightbox(src, alt) {
+          if (!lightbox || !lightboxImg) return;
+          lightboxImg.src = src;
+          lightboxImg.alt = alt || 'News image preview';
+          if (lightboxCaption) {
+            lightboxCaption.textContent = alt || '';
+          }
+          if (lightboxExternal) {
+            lightboxExternal.href = src;
+          }
+          lightbox.classList.add('active');
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+          if (!lightbox) return;
+          lightbox.classList.remove('active');
+          lightbox.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+          if (lightboxImg) {
+            setTimeout(() => {
+              if (!lightbox.classList.contains('active')) {
+                lightboxImg.src = '';
+              }
+            }, 250);
+          }
+        }
+
+        if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+        if (backdrop) backdrop.addEventListener('click', closeLightbox);
+        if (lightboxImg) lightboxImg.addEventListener('click', closeLightbox);
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
+            closeLightbox();
+          }
+        });
+
+        // Wire up all news image wrapper containers
+        document.querySelectorAll('.news-img-wrapper').forEach(wrapper => {
+          const img = wrapper.querySelector('.news-img');
+          if (img) {
+            wrapper.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const currentSrc = img.currentSrc || img.src;
+              const alt = img.getAttribute('alt') || '';
+              openLightbox(currentSrc, alt);
+            });
+          }
+        });
+
+        // Wire up all "View Full Image" action buttons
+        document.querySelectorAll('.news-expand-trigger').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const src = btn.getAttribute('data-img-src');
+            const alt = btn.getAttribute('data-img-alt') || '';
+            if (src) {
+              openLightbox(src, alt);
+            }
+          });
+        });
+      })();
     });
   </script>
 </body>
